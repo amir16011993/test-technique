@@ -3,9 +3,6 @@ from datetime import datetime
 
 df = pd.read_csv("C:\Users\MSI GP 66\Downloads\bq-results-20231220-134345-1703079855754.csv")
 
-
-
-# Assuming df is your DataFrame
 # Filter engagements that occurred in 2023
 df['date'] = pd.to_datetime(df['date'])
 df = df[df['date'].dt.year == 2023]
