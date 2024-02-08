@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
 
-df = pd.read_csv("C:\Users\MSI GP 66\Downloads\bq-results-20231220-134345-1703079855754.csv")
+df = pd.read_csv("bq-results-20231220-134345-1703079855754.csv")
 
 # Filter engagements that occurred in 2023
 df['date'] = pd.to_datetime(df['date'])
