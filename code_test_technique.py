@@ -13,11 +13,14 @@ grouped_df = df.groupby(['scv_id', 'topic', 'source_system']).size().reset_index
 # Pivot the DataFrame to have source_systems as columns
 pivoted_df = grouped_df.pivot_table(index=['scv_id', 'topic'], columns='source_system', values='engagement_count', fill_value=0).reset_index()
 
+
 # Calculate the total engagement for each user-topic combination
-pivoted_df['total_engagement'] = pivoted_df['Activecampaign'] + pivoted_df['Catalogue'] + pivoted_df['PX']
+pivoted_df['total_engagement'] = pivoted_df['activecampaign'] + pivoted_df['catalogue'] + pivoted_df['PX']
 
 # Calculate the topic affinity score
 pivoted_df['topic_affinity_score'] = 10 * (pivoted_df['total_engagement'] / pivoted_df['total_engagement'].max())
+print (pivoted_df['topic_affinity_score'].min())
+print (pivoted_df['topic_affinity_score'].max())
 
 # Drop unnecessary columns
 result_df = pivoted_df[['scv_id', 'topic', 'topic_affinity_score']]
